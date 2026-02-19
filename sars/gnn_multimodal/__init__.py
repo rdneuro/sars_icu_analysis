@@ -113,6 +113,27 @@ from .viz import (
     plot_hierarchical_gradient,
 )
 
+from .gnn_connectome import (
+    # Utilities
+    connectivity_to_pyg,
+    build_multimodal_features,
+    compute_r2_nodal,
+    # Models
+    SCFCPredictor,
+    BrainVGAE,
+    MultimodalHeteroGNN,
+    NodeAnomalyDetector,
+    GraphLevelEmbedder,
+    # Pipeline
+    BrainGNNPipeline,
+    # Result dataclasses
+    SCFCPredictionResult,
+    VAEResult,
+    HeterogeneousResult,
+    AnomalyResult,
+    GraphEmbeddingResult,
+)
+
 __all__ = [
     # Config
     "GNNMultimodalConfig", "GATConfig", "ContrastiveConfig",
