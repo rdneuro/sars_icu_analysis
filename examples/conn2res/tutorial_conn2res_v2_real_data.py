@@ -1079,7 +1079,7 @@ try:
     fig1 = plt.figure(figsize=(7.2, 2.2))
     ni_plot.plot_stat_map(dec_img, bg_img=ni_data.load_mni152_template(resolution=2),
                           display_mode='ortho', cmap='hot', colorbar=True,
-                          title='Nodal SC-FC Decoupling (MAE)', figure=fig1,
+                          title=None, figure=fig1,
                           threshold=0.001, black_bg=False)
     fig1.savefig(os.path.join(OUTPUT_DIR, 'E10a_brain_decoupling.png'), dpi=300)
     fig1.savefig(os.path.join(OUTPUT_DIR, 'E10a_brain_decoupling.pdf')); plt.close(fig1)
@@ -1101,7 +1101,7 @@ try:
     fig2 = plt.figure(figsize=(7.2, 2.2))
     ni_plot.plot_stat_map(coup_img, bg_img=ni_data.load_mni152_template(resolution=2),
                           display_mode='ortho', cmap='RdYlBu_r', colorbar=True,
-                          title='Network SC-FC Coupling Strength', figure=fig2,
+                          title=None, figure=fig2,
                           threshold=0.001, black_bg=False)
     fig2.savefig(os.path.join(OUTPUT_DIR, 'E10b_brain_coupling.png'), dpi=300)
     fig2.savefig(os.path.join(OUTPUT_DIR, 'E10b_brain_coupling.pdf')); plt.close(fig2)
@@ -1115,7 +1115,7 @@ try:
 
     fig3 = plt.figure(figsize=(7.2, 2.2))
     ni_plot.plot_roi(net_img, bg_img=ni_data.load_mni152_template(resolution=2),
-                     display_mode='ortho', title='Yeo 7-Network Parcellation',
+                     display_mode='ortho', title=None,
                      figure=fig3, black_bg=False)
     fig3.savefig(os.path.join(OUTPUT_DIR, 'E10c_brain_yeo7.png'), dpi=300)
     fig3.savefig(os.path.join(OUTPUT_DIR, 'E10c_brain_yeo7.pdf')); plt.close(fig3)
@@ -1127,7 +1127,7 @@ try:
 
     fig4 = plt.figure(figsize=(7.2, 2.5))
     ni_plot.plot_connectome(SC_raw, coords, edge_threshold="95%",
-                            display_mode='ortho', title='SC (top 5% edges)',
+                            display_mode='ortho', title=None,
                             figure=fig4, node_size=15, node_color=node_colors,
                             edge_cmap='YlOrRd', black_bg=False)
     fig4.savefig(os.path.join(OUTPUT_DIR, 'E10d_brain_connectome.png'), dpi=300)

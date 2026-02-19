@@ -1082,7 +1082,7 @@ try:
     ni_plot.plot_stat_map(
         coup_img, bg_img=mni_template, display_mode='ortho',
         cmap='RdYlBu_r', colorbar=True, black_bg=False,
-        title='Group Mean Nodal SC-FC Coupling (r)',
+        title=None,
         figure=fig, threshold=0.001, vmax=0.15
     )
     savefig(fig, 'B01_brain_mean_coupling')
@@ -1095,7 +1095,7 @@ try:
     ni_plot.plot_stat_map(
         dec_img, bg_img=mni_template, display_mode='ortho',
         cmap='hot', colorbar=True, black_bg=False,
-        title='Group Mean Nodal Decoupling (MAE)',
+        title=None,
         figure=fig, threshold=0.001
     )
     savefig(fig, 'B02_brain_mean_decoupling')
@@ -1125,7 +1125,7 @@ try:
     ni_plot.plot_stat_map(
         var_img, bg_img=mni_template, display_mode='ortho',
         cmap='YlOrRd', colorbar=True, black_bg=False,
-        title='Inter-Subject Variability (CoV of Decoupling)',
+        title=None,
         figure=fig, threshold=0.001
     )
     savefig(fig, 'B04_brain_variability')
@@ -1150,7 +1150,7 @@ try:
     ni_plot.plot_connectome(
         sc_group, coords, edge_threshold="95%",
         display_mode='ortho',
-        title='Group Mean SC (top 5% edges)',
+        title=None,
         figure=fig, node_size=12, node_color=node_colors,
         edge_cmap='YlOrRd', black_bg=False
     )
