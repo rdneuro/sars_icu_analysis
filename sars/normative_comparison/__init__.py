@@ -2,7 +2,7 @@
 Normative Comparison - Análise com modelos nulos.
 """
 
-__all__ = ['run_null_model_analysis', 'config', 'null_models']
+__all__ = ['run_null_model_analysis', 'plot_null_model_results', 'config', 'null_models', 'null_models_viz']
 
 
 def run_null_model_analysis(
@@ -138,8 +138,41 @@ def run_null_model_analysis(
     }
 
 
+def plot_null_model_results(
+    results: dict,
+    output_dir: str = None
+) -> dict:
+    """
+    Gerar visualizações dos resultados da análise com modelos nulos.
+    
+    Parameters
+    ----------
+    results : dict
+        Output de run_null_model_analysis()
+    output_dir : str, optional
+        Diretório para salvar. Se None, usa o mesmo da análise.
+        
+    Returns
+    -------
+    dict
+        Paths das figuras geradas
+    """
+    from pathlib import Path
+    from . import null_models_viz as viz
+    
+    results_df = results['individual_results']
+    atlas = results['cohort_summary'].get('atlas', 'unknown')
+    
+    if output_dir is None:
+        output_dir = Path(results['output_dir']) / 'figures'
+    else:
+        output_dir = Path(output_dir)
+    
+    return viz.generate_full_report(results_df, output_dir, atlas)
+
+
 def __getattr__(name):
     import importlib
-    if name in ('config', 'null_models'):
+    if name in ('config', 'null_models', 'null_models_viz'):
         return importlib.import_module(f'.{name}', package=__name__)
     raise AttributeError(f"module has no attribute '{name}'")

@@ -1225,13 +1225,13 @@ def auc_trapezoid(
     return float(np.trapz(y, x))
 
 
-def get_mtx(sub, dtype, mod, atlas='schaefer100'):
+def get_mtx(sub, dtype, mod=None, atlas='schaefer100'):
     if mod == None:
-        if dtype == 'fmri':
-            mod = "connectivity_correlation_fisherz.npy"
-        elif dtype == 'dmri':
-            mod = "connectivity_sift2.npy"
-    fpath = f"/mnt/nvme1n1p1/sars_cov_2_project/data/output/mtxs/{sub}/{atlas}/{dtype}/{mod}.npy"
+        if dtype == 'fmri' or dtype == 'f':
+            mod = "connectivity_correlation"
+        elif dtype == 'dmri' or dtype == 'd':
+            mod = "connectivity_sift2"
+    fpath = f"/mnt/nvme1n1p1/sars_cov_2_project/data/proc/mtxs/{sub}/{atlas}/{dtype}/{mod}.npy"
     mtx = np.load(fpath)
     return mtx
 
@@ -1239,3 +1239,13 @@ def get_lsubs():
     subs_ls = [f"sub-{k:02n}" for k in range(1, 25)]
     subs_ls.remove('sub-21')
     return subs_ls
+
+def treat_sc(sc, diagonal=np.nan, method='max'):
+    sc_final = sc.copy()
+    if method == 'max':
+        sc_final = sc_final / np.nanmax(sc_final)
+    elif method == 'log':
+        sc_final = np.log1p(sc_final)
+    np.fill_diagonal(sc_final, diagonal)
+    return sc_final
+    

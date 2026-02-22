@@ -1,11 +1,11 @@
 """
-Specific COVID-19 Analysis
+Análise Específica COVID-19
 ============================
 
-Metrics and analyses focused on Long COVID studies:
+Métricas e análises focadas em estudos de Long COVID:
 - ALFF, fALFF, ReHo
 - Network-based statistics
-- Longitudinal changes
+- Alterações longitudinais
 """
 
 import numpy as np
